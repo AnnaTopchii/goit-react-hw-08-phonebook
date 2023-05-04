@@ -1,28 +1,49 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { List, ListItem, Text, Button } from './ContactList.styled';
+// import { List, ListItem, Text, Button} from './ContactList.styled';
 
 import { deleteContact } from 'redux/contacts/operations';
 import { selectVisibleContacts } from 'redux/selectors';
+import { ListGroup, Button } from 'react-bootstrap';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
-    <List>
+    <ListGroup as="ol" numbered>
       {visibleContacts.map(({ id, name, phone }) => (
-        <ListItem key={id}>
-          <Text>
+        <ListGroup.Item
+          as="li"
+          key={id}
+          className="d-flex justify-content-between"
+        >
+          <span>
             {name}: {phone}
-          </Text>
+          </span>
           <Button type="button" onClick={() => dispatch(deleteContact(id))}>
             Delete
           </Button>
-        </ListItem>
+        </ListGroup.Item>
       ))}
       {visibleContacts.length === 0 && (
         <p>Sorry, You have no contacts with such name</p>
       )}
-    </List>
+    </ListGroup>
+
+    // <List>
+    //   {visibleContacts.map(({ id, name, phone }) => (
+    //     <ListItem key={id}>
+    //       <Text>
+    //         {name}: {phone}
+    //       </Text>
+    //       <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+    //         Delete
+    //       </Button>
+    //     </ListItem>
+    //   ))}
+    //   {visibleContacts.length === 0 && (
+    //     <p>Sorry, You have no contacts with such name</p>
+    //   )}
+    // </List>
   );
 };

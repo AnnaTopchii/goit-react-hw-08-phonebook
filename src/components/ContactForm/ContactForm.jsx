@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Field } from 'formik';
-import { Form, FormField, ErrorMessage, Button } from './ContactForm.styled';
+import { Formik, Form as FormikForm, ErrorMessage, Field } from 'formik';
+// import { Form, FormField, ErrorMessage, Button } from './ContactForm.styled';
+import { Button, Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 
 import { addContact } from 'redux/contacts/operations';
@@ -57,17 +58,21 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
       validationSchema={Schema}
     >
-      <Form>
-        <FormField>
-          Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="div" />
-        </FormField>
-        <FormField>
-          Phone
-          <Field type="tel" name="number" />
-        </FormField>
-        <ErrorMessage name="number" component="div" />
+      <Form as={FormikForm}>
+        <Form.Group className="mb-3" controlId="formContactName">
+          <Form.Label>
+            Name
+            <Form.Control as={Field} type="text" name="name" />
+            <ErrorMessage name="name" component="div" />
+          </Form.Label>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formContactPhone">
+          <Form.Label>
+            Phone
+            <Form.Control type="tel" name="number" />
+          </Form.Label>
+          <ErrorMessage name="number" component="div" />
+        </Form.Group>
         <Button type="submit">Add contact</Button>
       </Form>
     </Formik>

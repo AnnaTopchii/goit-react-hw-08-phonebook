@@ -1,11 +1,12 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute ';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
@@ -23,7 +24,7 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
     <Routes>
-      <Route path="/goit-react-hw-08-phonebook" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route
           path="/register"
           element={
@@ -46,6 +47,7 @@ export const App = () => {
           }
         />
       </Route>
+      <Route path="*" element={<Navigate to={'home'} />} />
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { fetchContacts } from 'redux/contacts/operations';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
@@ -10,7 +10,8 @@ import {
   selectError,
   selectIsLoading,
 } from 'redux/contacts/selectors';
-import { Container, Title, SubTitle } from 'components/App.styled';
+// import { Container, Title, SubTitle } from 'components/App.styled';
+import { Container } from 'react-bootstrap';
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -28,10 +29,10 @@ export default function Tasks() {
         <title>Your contacts</title>
       </Helmet>
       <Container>
-        <Title>Phone book</Title>
+        <h1>Phone book</h1>
         <ContactForm />
 
-        <SubTitle>Contacts</SubTitle>
+        <h2>Contacts</h2>
         {isLoading && !error && <b>Request in progress...</b>}
         {contacts.length > 0 ? (
           <>

@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { Button, Container, Form } from 'react-bootstrap';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -17,16 +18,42 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Container>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="myemail@gmail.com"
+            name="email"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Log In
+        </Button>
+      </Form>
+    </Container>
+
+    // <form onSubmit={handleSubmit} autoComplete="off">
+    //   <label>
+    //     Email
+    //     <input type="email" name="email" />
+    //   </label>
+    //   <label>
+    //     Password
+    //     <input type="password" name="password" />
+    //   </label>
+    //   <button type="submit">Log In</button>
+    // </form>
   );
 };
