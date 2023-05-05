@@ -19,13 +19,14 @@ export const LoginForm = () => {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit} autoComplete="off">
+      <Form onSubmit={handleSubmit} autoComplete="off" className="mx-auto w-75">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="myemail@gmail.com"
             name="email"
+            required
           />
         </Form.Group>
 
@@ -35,6 +36,7 @@ export const LoginForm = () => {
             type="password"
             placeholder="Password"
             name="password"
+            required
           />
         </Form.Group>
 

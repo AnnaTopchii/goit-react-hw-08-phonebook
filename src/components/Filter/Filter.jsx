@@ -24,7 +24,7 @@ export const Filter = () => {
       <Form.Control
         type="text"
         onChange={onChange}
-        placeholder="Taras Shevchenko"
+        placeholder="Taras"
         value={filterValue}
       />
     </Form.Group>

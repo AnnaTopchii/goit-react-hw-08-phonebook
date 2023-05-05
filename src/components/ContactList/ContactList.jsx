@@ -10,17 +10,21 @@ export const ContactList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
-    <ListGroup as="ol" numbered>
-      {visibleContacts.map(({ id, name, phone }) => (
+    <ListGroup as="ul">
+      {visibleContacts.map(({ id, name, number }) => (
         <ListGroup.Item
           as="li"
           key={id}
-          className="d-flex justify-content-between"
+          className="d-flex justify-content-between align-items-center"
         >
           <span>
-            {name}: {phone}
+            {name}: {number}
           </span>
-          <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+          <Button
+            variant="outline-warning"
+            type="button"
+            onClick={() => dispatch(deleteContact(id))}
+          >
             Delete
           </Button>
         </ListGroup.Item>

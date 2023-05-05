@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form as FormikForm, ErrorMessage, Field } from 'formik';
-// import { Form, FormField, ErrorMessage, Button } from './ContactForm.styled';
 import { Button, Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 
@@ -58,7 +57,7 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
       validationSchema={Schema}
     >
-      <Form as={FormikForm}>
+      <Form as={FormikForm} className="mb-5">
         <Form.Group className="mb-3" controlId="formContactName">
           <Form.Label>
             Name
@@ -69,7 +68,7 @@ export const ContactForm = () => {
         <Form.Group className="mb-3" controlId="formContactPhone">
           <Form.Label>
             Phone
-            <Form.Control type="tel" name="number" />
+            <Form.Control as={Field} type="tel" name="number" />
           </Form.Label>
           <ErrorMessage name="number" component="div" />
         </Form.Group>

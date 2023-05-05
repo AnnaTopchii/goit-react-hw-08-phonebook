@@ -8,10 +8,10 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <div>
+    <div className="d-flex align-items-center gap-2">
       <p>Welcome, {user.name}</p>
       <Button
-        variant="outline-primary"
+        variant="outline-secondary"
         type="button"
         onClick={() => dispatch(logOut())}
       >
