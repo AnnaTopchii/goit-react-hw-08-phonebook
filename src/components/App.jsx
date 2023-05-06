@@ -1,7 +1,6 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute ';
 import { RestrictedRoute } from './RestrictedRoute';
